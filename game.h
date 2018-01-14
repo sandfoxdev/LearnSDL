@@ -4,6 +4,7 @@
 #define GAME_H
 
 #include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
 
 class Game{
 
@@ -14,7 +15,7 @@ class Game{
 		// Simply set the running variable to true
 		bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
 		void render();
-		void update(){}
+		void update();
 		void handleEvents();
 		void clean();
 
@@ -26,6 +27,17 @@ class Game{
 
 		SDL_Window* m_pWindow;
 		SDL_Renderer* m_pRenderer;
+		
+		// The new SDL_Texture variable
+		SDL_Texture* m_pTexture;
+		// The first rectaingle
+		SDL_Rect m_sourceRectangle;
+		// Another rectaingle
+		SDL_Rect m_destinationRectangle;
 };
+
+
+
+
 
 #endif

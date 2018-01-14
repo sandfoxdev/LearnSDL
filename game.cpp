@@ -46,12 +46,39 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	m_bRunning = true;
 	// Start main loop
 	
+
+	//SDL_Surface* pTempSurface = SDL_LoadBMP("assets/rider.bmp");
+	//m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+	//SDL_FreeSurface(pTempSurface);
+	//SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);	
+	//m_destinationRectangle.x = m_sourceRectangle.x = 0;
+	//m_destinationRectangle.y = m_sourceRectangle.y = 0;
+	//m_destinationRectangle.w = m_sourceRectangle.w;
+	//m_destinationRectangle.h = m_sourceRectangle.h;
+
+	SDL_Surface* pTempSurface = IMG_Load("assets/animate-alpha.png");
+	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+	SDL_FreeSurface(pTempSurface);
+	m_sourceRectangle.w = 128;
+	m_sourceRectangle.h = 82;	
+	m_destinationRectangle.x = m_sourceRectangle.x = 0;
+	m_destinationRectangle.y = m_sourceRectangle.y = 0;
+	m_destinationRectangle.w = m_sourceRectangle.w;
+	m_destinationRectangle.h = m_sourceRectangle.h;
+
 	return true;
+}
+
+void Game::update(){
+	m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
 }
 
 void Game::render(){
 	// Clear the renderer to the draw color
 	SDL_RenderClear(m_pRenderer);
+	
+	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
+	// SDL_RenderCopy(m_pRenderer, m_pTexture, NULL, NULL);
 	
 	// Draw to the screen
 	SDL_RenderPresent(m_pRenderer);
@@ -77,4 +104,7 @@ void Game::clean(){
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_Quit();
 }
+
+
+
 
