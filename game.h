@@ -14,8 +14,18 @@
 class Game{
 
 	public:
-		Game(){}
-		~Game(){}	
+
+		// Create the public instance function
+		static Game* Instance(){
+			if(s_pInstance == 0){
+				s_pInstance = new Game();
+				return s_pInstance;
+			}
+			return s_pInstance;
+		}
+		
+		//Game(){}
+		//~Game(){}	
 	
 		// Simply set the running variable to true
 		bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
@@ -24,6 +34,8 @@ class Game{
 		void update();
 		void handleEvents();
 		void clean();
+
+		SDL_Renderer* getRenderer() const {return m_pRenderer;}
 
 		// a function to access the private running variable
 		bool running() {return m_bRunning;}
@@ -54,6 +66,14 @@ class Game{
 		//GameObject* m_enemy1;
 		//GameObject* m_enemy2;
 		//GameObject* m_enemy3;		
+
+		
+		Game();
+		// Create the s_pInstance member variable
+		static Game* s_pInstance;
+
+		// Create the typedef
+		typedef Game TheGame;
 
 };
 

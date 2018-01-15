@@ -3,6 +3,8 @@
 #include "game.h"
 #include <iostream>
 
+Game* Game::s_pInstance = 0;
+
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen){
 	int flags = 0;
 	if(fullscreen){
