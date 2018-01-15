@@ -1,15 +1,18 @@
 // gameObject.h
 
+#ifndef GAME_OBJECT_H
+#define GAME_OBJECT_H
+
 #include <string>
 #include <SDL2/SDL.h>
 
 class GameObject{
 
-	public:
-		void load(int x, int y, int width, int height, std::string textureID);
-		void draw(SDL_Renderer* pRenderer);  //{std::cout << "draw game object";}
-		void update();   //{std::cout << "update game object";}
-		void clean();  //{std::cout << "clean game object";}
+	public:		
+		virtual void load(int x, int y, int width, int height, std::string textureID);
+		virtual void draw(SDL_Renderer* pRenderer);  //{std::cout << "draw game object";}
+		virtual void update();   //{std::cout << "update game object";}
+		virtual void clean();  //{std::cout << "clean game object";}
 	
 	protected:
 		
@@ -25,3 +28,6 @@ class GameObject{
 		int m_height;
 
 };
+
+
+#endif

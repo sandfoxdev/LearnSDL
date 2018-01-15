@@ -1,5 +1,7 @@
 // player.h
 
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include "SDL2/SDL.h"
 #include "gameObject.h"
@@ -13,4 +15,7 @@ class Player : public GameObject{
 		void update();  //{std::cout << "update player"; m_x = 10; m_y = 20;}
 		void clean();  //{GameObject::clean(); std::cout << "clean player";}
 
-};		
+};	
+
+
+#endif	

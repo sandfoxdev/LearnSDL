@@ -6,7 +6,10 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "textureManager.h"
+#include "gameObject.h"
 #include "player.h"
+#include "enemy.h"
+#include <vector>
 
 class Game{
 
@@ -16,6 +19,7 @@ class Game{
 	
 		// Simply set the running variable to true
 		bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
+		//void draw();
 		void render();
 		void update();
 		void handleEvents();
@@ -40,8 +44,17 @@ class Game{
 		int m_currentFrame;
 		//TextureManager m_textureManager;
 
-		GameObject m_go;
-		Player m_player;
+		GameObject* m_go;
+		GameObject* m_player;
+		GameObject* m_enemy;		
+
+		std::vector<GameObject*> m_gameObjects;
+
+		//GameObject* m_player;
+		//GameObject* m_enemy1;
+		//GameObject* m_enemy2;
+		//GameObject* m_enemy3;		
+
 };
 
 
