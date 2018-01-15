@@ -5,6 +5,7 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "textureManager.h"
 
 class Game{
 
@@ -34,6 +35,9 @@ class Game{
 		SDL_Rect m_sourceRectangle;
 		// Another rectaingle
 		SDL_Rect m_destinationRectangle;
+
+		int m_currentFrame;
+		//TextureManager m_textureManager;
 };
 
 

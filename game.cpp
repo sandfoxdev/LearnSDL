@@ -56,30 +56,41 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	//m_destinationRectangle.w = m_sourceRectangle.w;
 	//m_destinationRectangle.h = m_sourceRectangle.h;
 
-	SDL_Surface* pTempSurface = IMG_Load("assets/animate-alpha.png");
-	m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-	SDL_FreeSurface(pTempSurface);
-	m_sourceRectangle.w = 128;
-	m_sourceRectangle.h = 82;	
-	m_destinationRectangle.x = m_sourceRectangle.x = 0;
-	m_destinationRectangle.y = m_sourceRectangle.y = 0;
-	m_destinationRectangle.w = m_sourceRectangle.w;
-	m_destinationRectangle.h = m_sourceRectangle.h;
+	//SDL_Surface* pTempSurface = IMG_Load("assets/animate-alpha.png");
+	//m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+	//SDL_FreeSurface(pTempSurface);
+	//m_sourceRectangle.w = 128;
+	//m_sourceRectangle.h = 82;	
+	//m_destinationRectangle.x = m_sourceRectangle.x = 0;
+	//m_destinationRectangle.y = m_sourceRectangle.y = 0;
+	//m_destinationRectangle.w = m_sourceRectangle.w;
+	//m_destinationRectangle.h = m_sourceRectangle.h;
+
+	if(!TextureManager::Instance() -> load("assets/animate-alpha.png", "animate", m_pRenderer)){
+		return false;
+	}
+
+
 
 	return true;
 }
 
 void Game::update(){
-	m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+	//m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
 }
 
 void Game::render(){
 	// Clear the renderer to the draw color
 	SDL_RenderClear(m_pRenderer);
 	
-	SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
+	//SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
 	// SDL_RenderCopy(m_pRenderer, m_pTexture, NULL, NULL);
 	
+	TextureManager::Instance() -> draw("animate", 0, 0, 128, 82, m_pRenderer);
+
+	TextureManager::Instance() -> drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+
 	// Draw to the screen
 	SDL_RenderPresent(m_pRenderer);
 }
