@@ -6,6 +6,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "textureManager.h"
+#include "player.h"
 
 class Game{
 
@@ -38,6 +39,9 @@ class Game{
 
 		int m_currentFrame;
 		//TextureManager m_textureManager;
+
+		GameObject m_go;
+		Player m_player;
 };
 
 

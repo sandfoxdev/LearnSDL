@@ -69,15 +69,20 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	if(!TextureManager::Instance() -> load("assets/animate-alpha.png", "animate", m_pRenderer)){
 		return false;
 	}
-
+	
+	m_go.load(100, 100, 128, 82, "animate");
+	m_player.load(300, 300, 128, 82, "animate");
 
 
 	return true;
 }
 
 void Game::update(){
-	//m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
+	m_sourceRectangle.x = 128 * int(((SDL_GetTicks() / 100) % 6));
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
+
+	m_go.update();
+	m_player.update();
 }
 
 void Game::render(){
@@ -87,9 +92,11 @@ void Game::render(){
 	//SDL_RenderCopyEx(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle, 0, 0, SDL_FLIP_HORIZONTAL);
 	// SDL_RenderCopy(m_pRenderer, m_pTexture, NULL, NULL);
 	
-	TextureManager::Instance() -> draw("animate", 0, 0, 128, 82, m_pRenderer);
+	//TextureManager::Instance() -> draw("animate", 0, 0, 128, 82, m_pRenderer);
+	//TextureManager::Instance() -> drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
 
-	TextureManager::Instance() -> drawFrame("animate", 100, 100, 128, 82, 1, m_currentFrame, m_pRenderer);
+	m_go.draw(m_pRenderer);
+	m_player.draw(m_pRenderer);
 
 	// Draw to the screen
 	SDL_RenderPresent(m_pRenderer);
