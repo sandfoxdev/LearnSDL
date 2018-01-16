@@ -29,7 +29,6 @@ class Game{
 	
 		// Simply set the running variable to true
 		bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
-		//void draw();
 		void render();
 		void update();
 		void handleEvents();
@@ -69,15 +68,14 @@ class Game{
 
 		
 		Game();
+		~Game();
 		// Create the s_pInstance member variable
 		static Game* s_pInstance;
 
-		// Create the typedef
-		typedef Game TheGame;
-
 };
 
-
+// Create the typedef
+typedef Game TheGame;
 
 
 

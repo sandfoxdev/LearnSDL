@@ -5,6 +5,7 @@
 
 #include <string>
 #include <SDL2/SDL.h>
+#include "loaderParams.h"
 
 class GameObject{
 
@@ -15,7 +16,7 @@ class GameObject{
 	
 	protected:
 		GameObject(const LoaderParams* pParams){}
-		virtual ~GameObjects(){}
+		virtual ~GameObject(){}
 
 };
 

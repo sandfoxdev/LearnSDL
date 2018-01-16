@@ -1,5 +1,5 @@
 # OBJS specifies which files to compile as part of the project
-OBJS = main.cpp game.cpp textureManager.cpp gameObject.cpp player.cpp enemy.cpp
+OBJS = main.cpp game.cpp textureManager.cpp gameObject.cpp player.cpp enemy.cpp sdlGameObject.cpp
 
 # CC specifies which compiler we're using
 CC = g++
