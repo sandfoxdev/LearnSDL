@@ -10,6 +10,7 @@
 #include "player.h"
 #include "enemy.h"
 #include <vector>
+#include "inputHandler.h"
 
 class Game{
 
@@ -38,6 +39,7 @@ class Game{
 
 		// a function to access the private running variable
 		bool running() {return m_bRunning;}
+		void quit() { m_bRunning = false; }
 
 	private:
 		bool m_bRunning;
