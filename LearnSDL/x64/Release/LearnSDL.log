@@ -1,0 +1,14 @@
+﻿  enemy.cpp
+  game.cpp
+  gameObject.cpp
+  main.cpp
+main.cpp(12): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+  player.cpp
+  sdlGameObject.cpp
+sdlGameObject.cpp(9): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  textureManager.cpp
+     Creating library C:\Users\izzyf\Documents\GitHub\LearnSDL\x64\Release\LearnSDL.lib and object C:\Users\izzyf\Documents\GitHub\LearnSDL\x64\Release\LearnSDL.exp
+  Generating code
+  All 318 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  LearnSDL.vcxproj -> C:\Users\izzyf\Documents\GitHub\LearnSDL\x64\Release\LearnSDL.exe
